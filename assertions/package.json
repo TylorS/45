@@ -1,0 +1,32 @@
+{
+  "name": "@45/assertions",
+  "version": "0.0.0",
+  "description": "Basic assertions library for 45 test runner",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "../node_modules/.bin/nb -o @45/assertions tslint && ../node_modules/.bin/nb -o @45/assertions mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/45.git"
+  },
+  "keywords": [
+    "45",
+    "assertions",
+    "assert"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/45/issues"
+  },
+  "homepage": "https://github.com/TylorS/45#readme",
+  "dependencies": {
+    "@typed/curry": "^1.0.1",
+    "lodash.isequal": "^4.5.0",
+    "object-inspect": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/lodash.isequal": "^4.5.0"
+  }
+}

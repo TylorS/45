@@ -1,8 +1,4 @@
-const config =
+export =
   {
-    tsc: {
-      es2015: true,
-    },
+    packages: ['assertions'],
   };
-
-export = config;

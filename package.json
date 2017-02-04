@@ -1,8 +1,8 @@
 {
+  "private": true,
   "name": "45",
   "version": "0.0.0",
   "description": "A simple test runner",
-  "main": "lib/index.js",
   "scripts": {
     "test:lint": "northbrook tslint",
     "test:unit": "northbrook mocha",
@@ -17,6 +17,8 @@
     "url": "git+https://github.com/TylorS/45.git"
   },
   "keywords": [
+    "45",
+    "functional",
     "test",
     "runner",
     "assert"
@@ -27,9 +29,6 @@
     "url": "https://github.com/TylorS/45/issues"
   },
   "homepage": "https://github.com/TylorS/45#readme",
-  "jsnext:main": "lib.es2015/index.js",
-  "module": "lib.es2015/index.js",
-  "typings": "lib.es2015/index.d.ts",
   "devDependencies": {
     "@motorcycle/tslint": "^1.3.0",
     "@northbrook/mocha": "^3.1.0",
@@ -41,10 +40,5 @@
     "northbrook": "^4.6.0",
     "tslint": "^4.4.2",
     "typescript": "^2.1.5"
-  },
-  "dependencies": {
-    "@briancavalier/assert": "^3.2.0",
-    "typed-colors": "^1.0.0",
-    "typed-figures": "^1.0.0"
   }
 }

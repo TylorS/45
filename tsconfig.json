@@ -13,6 +13,7 @@
     "outDir": ".tmp"
   },
   "include": [
-    "src/**/*.ts"
+    "45/src/**/*.ts",
+    "assertions/src/**/*.ts"
   ]
 }
