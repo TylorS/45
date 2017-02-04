@@ -10,7 +10,8 @@
     "commit": "northbrook commit",
     "build": "northbrook tsc",
     "preversion": "npm run build",
-    "release": "northbrook release"
+    "release": "northbrook release",
+    "postinstall": "nb exec -- yarn && nb link"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,31 @@
+{
+  "name": "45",
+  "version": "0.0.0",
+  "description": "A functionally-oriented test framework",
+  "main": "lib/index.js",
+  "bin": {
+    "45": "lib/45.js"
+  },
+  "scripts": {
+    "test": "../node_modules/.bin/nb -o 45 tslint && ../node_modules/.bin/nb -o 45 mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylorS/45.git"
+  },
+  "keywords": [
+    "45",
+    "test",
+    "framework",
+    "functional"
+  ],
+  "author": "Tylor Steinberger <tlsteinberger167@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TylorS/45/issues"
+  },
+  "homepage": "https://github.com/TylorS/45#readme",
+  "devDependencies": {
+    "@45/assertions": "latest"
+  }
+}

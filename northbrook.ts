@@ -1,4 +1,4 @@
 export =
   {
-    packages: ['assertions'],
+    packages: ['45', 'assertions'],
   };
