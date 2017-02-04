@@ -1,14 +1,16 @@
-import * as assert from 'assert';
+import { Test, describe, given, it } from '../';
 
 import { fail } from './fail';
 
-describe(`fail`, () => {
-  describe(`given a message string`, () => {
-    it(`returns a FailedAssertion`, () => {
+export const test: Test = describe(`fail`, [
+  given(`a message string`, [
+    it(`returns a FailedAssertion`, ({ all, assert, equals }) => {
       const assertion = fail(`Message`);
 
-      assert.ok(!assertion.passed);
-      assert.strictEqual(assertion.message, `Message`);
-    });
-  });
-});
+      return all([
+        assert(!assertion.passed),
+        equals(assertion.message, 'Message'),
+      ]);
+    }),
+  ]),
+]);

@@ -1,39 +1,49 @@
-import * as assert from 'assert';
+import { Assertion, Test, describe, given, it } from '../';
 
-import { Assertion, equals } from '../';
+import { strip } from 'typed-colors';
 
-describe(`equals`, () => {
-  describe(`given expected value and actual value`, () => {
-    it(`returns an Assertion`, () => {
+export const test: Test = describe(`equals`, [
+  given(`expected value and actual value`, [
+    it(`returns an Assertion`, ({ equals }) => {
       const assertion: Assertion = equals(1)(1);
 
-      assert.strictEqual(typeof assertion.passed, 'boolean');
-    });
+      return equals(typeof assertion.passed, 'boolean');
+    }),
 
-    describe(`if expected value and actual are equal`, () => {
-      it(`returns a SuccessfulAssertion`, () => {
-        assert.ok(equals('', '').passed);
-        assert.ok(equals(1, 1).passed);
-        assert.ok(equals({}, {}).passed);
-        assert.ok(equals({ a: 1 }, { a: 1 }).passed);
-        assert.ok(equals(NaN, NaN).passed);
-        assert.ok(equals(0)(-0).passed);
-      });
-    });
+    given(`expected value and actual are equal`, [
+      it(`returns a SuccessfulAssertion`, ({ all, equals }) => {
+        return all([
+          equals('', ''),
+          equals(1, 1),
+          equals({}, {}),
+          equals({ a: 1 }, { a: 1 }),
+          equals(NaN, NaN),
+          equals(0)(-0),
+        ]);
+      }),
+    ]),
 
-    describe(`if expected value and actual are not equal`, () => {
-      it(`returns a FailedAssertion`, () => {
-        assert.ok(!equals('', 'asdf').passed);
-        assert.ok(!equals(1, 2).passed);
-        assert.ok(!equals({ a: 1 }, { a: 2 }).passed);
+    given(`xpected value and actual are not equal`, [
+      it(`returns a FailedAssertion`, ({ equals, all, assert }) => {
+        const passed = all([
+          assert(!equals('', 'asdf').passed),
+          assert(!equals(1, 2).passed),
+          assert(!equals({ a: 1 }, { a: 2 }).passed),
+        ]);
 
         const assertion: Assertion = equals({ b: 7 }, { b: 42 });
 
         if (assertion.passed)
           throw new Error(`Assertion should not succeed`);
 
-        assert.strictEqual(assertion.message, `Equality check failed: { b: 7 }, { b: 42 }`);
-      });
-    });
-  });
-});
+        return all([
+          passed,
+          equals(
+            `Equality check failed: Expected: { b: 7 } Actual: { b: 42 }`.replace(/\s/g, ''),
+            strip(assertion.message).replace(/\s/g, ''),
+          ),
+        ]);
+      }),
+    ]),
+  ]),
+]);

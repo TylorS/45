@@ -1,30 +1,29 @@
-import * as assert from 'assert';
+import { Test, describe, given, it } from '../';
 
-import { Test, equals, it as it45 } from '../';
+export const test = describe(`it`, [
+  given(`a test name and test function`, [
+    it(`returns a Test`, ({ equals, all, assert }) => {
+      const testTest: Test = it('does things', () => equals(1, 1));
 
-describe(`it`, () => {
-  describe(`given a test name and test function`, () => {
-    it(`returns a Test`, () => {
-      const test: Test = it45('does things', () => equals(1, 1));
-
-      assert.strictEqual(test.name, 'does things');
-
-      return test.run().then(assertion => {
-        assert.ok(assertion.passed);
+      return testTest.run().then(assertion => {
+        return all([
+          assert(testTest.name.includes('does things')),
+          assert(assertion.passed),
+        ]);
       });
-    });
-  });
+    }),
+  ]),
 
-  describe(`given a test function that does not return an assertion`, () => {
-    it(`returns a failed test`, () => {
-      const test: Test = it45('does stuff', () => { return 1 as any; });
+  given(`a test function that does not return an assertion`, [
+    it(`returns a failed test`, ({ equals }) => {
+      const testTest: Test = it('does stuff', () => { return 1 as any; });
 
-      return test.run().then(assertion => {
+      return testTest.run().then(assertion => {
         if (assertion.passed)
           throw new Error(`Should not return passing assertion`);
 
-        assert.strictEqual(assertion.message, 'No assertions used');
+        return equals(assertion.message, 'No assertions used');
       });
-    });
-  });
-});
+    }),
+  ]),
+]);

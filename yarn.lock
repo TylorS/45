@@ -56,7 +56,7 @@
   dependencies:
     "@types/minimatch" "*"
 
-"@types/glob-expand@0.0.30":
+"@types/glob-expand@0.0.30", "@types/glob-expand@^0.0.30":
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/glob-expand/-/glob-expand-0.0.30.tgz#7d1185a8607b693a2bb7414f1cf9ea1b8fd396d6"
   dependencies:

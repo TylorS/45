@@ -1,5 +1,7 @@
 const isEqual: (a: any, b: any) => boolean = require('lodash.isequal');
 
+import { green, red } from 'typed-colors';
+
 import { Assertion } from '../';
 import { curry2 } from '@typed/curry';
 import { inspect } from './inspect';
@@ -11,12 +13,14 @@ export const equals: EqualsFn = curry2(
     if (areEqual)
       return {
         passed: true,
-        message: `Equality check passed: ${inspect(expected)}, ${inspect(actual)}`
+        message: ``,
       };
 
     return {
       passed: false,
-      message: `Equality check failed: ${inspect(expected)}, ${inspect(actual)}`,
+      message: `Equality check failed:
+    ${green('Expected')}: ${inspect(expected)}
+    ${red('Actual')}: ${inspect(actual)}`,
     };
   },
 );

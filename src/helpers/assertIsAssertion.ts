@@ -1,4 +1,4 @@
-import { Assertion } from '../../';
+import { Assertion } from '../';
 
 export function assertIsAssertion (x: any): Assertion {
   if (x && typeof x.passed === 'boolean' && typeof x.message === 'string')

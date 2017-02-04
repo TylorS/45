@@ -41,3 +41,6 @@ jspm_packages
 lib
 lib.es2015
 .tmp
+
+# other stuff
+src/test.ts
