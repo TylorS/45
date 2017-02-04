@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var expand = require("glob-expand");
 var fourtyFive = require("../lib");
