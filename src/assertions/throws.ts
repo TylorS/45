@@ -1,4 +1,4 @@
-import { Assertion } from './';
+import { Assertion } from '../';
 import { inspect } from './inspect';
 
 export function throws(f: () => any): Assertion {
@@ -6,6 +6,6 @@ export function throws(f: () => any): Assertion {
     const x = f();
     return { passed: false, message: inspect(x) };
   } catch (e) {
-    return { passed: true };
+    return { passed: true, message: e.message };
   }
 }

@@ -9,11 +9,9 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true,
-    "outDir": ".tmp"
+    "strictNullChecks": true
   },
   "include": [
-    "45/src/**/*.ts",
-    "assertions/src/**/*.ts"
+    "src/**/*.ts"
   ]
 }

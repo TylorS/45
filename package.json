@@ -1,8 +1,9 @@
 {
-  "private": true,
   "name": "45",
   "version": "0.0.0",
-  "description": "A simple test runner",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "description": "A functionally-oriented test runner",
   "scripts": {
     "test:lint": "northbrook tslint",
     "test:unit": "northbrook mocha",
@@ -10,8 +11,7 @@
     "commit": "northbrook commit",
     "build": "northbrook tsc",
     "preversion": "npm run build",
-    "release": "northbrook release",
-    "postinstall": "nb exec -- yarn && npm run build && nb link"
+    "release": "northbrook release"
   },
   "repository": {
     "type": "git",
@@ -41,5 +41,10 @@
     "northbrook": "^4.6.0",
     "tslint": "^4.4.2",
     "typescript": "^2.1.5"
+  },
+  "dependencies": {
+    "@typed/curry": "^1.0.1",
+    "lodash.isequal": "^4.5.0",
+    "object-inspect": "^1.2.1"
   }
 }

@@ -1,6 +1,6 @@
 import * as assert from 'assert';
 
-import { Assertion, equals } from './';
+import { Assertion, equals } from '../';
 
 describe(`equals`, () => {
   describe(`given expected value and actual value`, () => {

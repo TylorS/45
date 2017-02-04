@@ -1,7 +1,7 @@
-import { FailedAssertion } from './';
+import { Assertion } from '../';
 import { inspect } from './inspect';
 
-export const fail = <A>(message: A): FailedAssertion =>
+export const fail = <A>(message: A): Assertion =>
   ({
     passed: false,
     message: inspect(message),
