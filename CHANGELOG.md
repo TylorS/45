@@ -1,3 +1,10 @@
+# 0.1.1 (2017-02-04)
+---
+
+## Bug Fixes
+
+- fix(45): adds node env to fix bin execution and fix example in README [ac3c61d0](https://github.com/TylorS/45/commits/ac3c61d0aa69c8d8fa21e842489bbc9111b26f61)
+
 # 0.1.0 (2017-02-04)
 ---
 
