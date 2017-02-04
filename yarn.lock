@@ -6,19 +6,6 @@
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@motorcycle/tslint/-/tslint-1.3.0.tgz#c8624624ce9b074e437cc4853ee8fc85a0b2a143"
 
-"@northbrook/mocha@^3.1.0":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@northbrook/mocha/-/mocha-3.1.1.tgz#1a5935b78ccdcc8f534d2dcf0531b84a21a1c6de"
-  dependencies:
-    "@typed/sequence" "^1.1.0"
-    "@types/glob-expand" "0.0.30"
-    "@types/mocha" "^2.2.38"
-    "@types/node" "^7.0.4"
-    buba "^4.0.2"
-    glob-expand "^0.2.1"
-    mocha "^3.2.0"
-    northbrook "^4.6.0"
-
 "@northbrook/tsc@^1.0.7":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@northbrook/tsc/-/tsc-1.0.8.tgz#70cb5a6744c64bcb8849221b20fdd22898d76749"
@@ -80,10 +67,6 @@
 "@types/mkdirp@^0.3.29":
   version "0.3.29"
   resolved "https://registry.yarnpkg.com/@types/mkdirp/-/mkdirp-0.3.29.tgz#7f2ad7ec55f914482fc9b1ec4bb1ae6028d46066"
-
-"@types/mocha@^2.2.38":
-  version "2.2.39"
-  resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.39.tgz#f68d63db8b69c38e9558b4073525cf96c4f7a829"
 
 "@types/node@*", "@types/node@^7.0.4":
   version "7.0.5"
