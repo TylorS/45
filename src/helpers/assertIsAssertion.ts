@@ -1,8 +1,8 @@
-import { Assertion } from '../';
+import { Assertion, fail } from '../';
 
-export function assertIsAssertion (x: any): Assertion {
-  if (x && typeof x.passed === 'boolean' && typeof x.message === 'string')
-    return x as Assertion;
+export function assertIsAssertion (x: any): Assertion<any> {
+  if (x && typeof x.verify === 'function')
+    return x as Assertion<any>;
 
-  return { passed: false, message: `No assertions used` };
+  return fail('No assertions were returned');
 }

@@ -1,41 +1,31 @@
-import { failure, success } from './helpers/formatMessage';
+import { Assertion, Test, TestResult } from './';
+import { failure, success } from './helpers';
 
 import { EOL } from 'os';
-import { Test } from './';
-import { red } from 'typed-colors';
 
-export class FourtyFive {
-  constructor (private tests: Array<Test>) {}
+export function fourtyFive(tests: Array<Test>): Promise<TestResult> {
+  const result = { failures: 0, message: '' };
 
-  public run(): Promise<{ failures: number, message: string }> {
-    const tests = this.tests;
+  return Promise.all(tests.map(runTest(result))).then(() => result);
+}
 
-    return Promise.all(tests.map(test => test.run()))
-      .then((assertions) => {
-        const result =
-          {
-            failures: 0,
-            message: EOL,
-          };
+function runTest(result: TestResult) {
+  return function (test: Test) {
+    return test.run().then(verify(result, test));
+  };
+}
 
-        assertions.forEach((assertion, i) => {
-          const test = tests[i];
+function verify(result: TestResult, test: Test) {
+  return function (assertion: Assertion<any>) {
+    assertion.verify({
+      success() {
+        result.message += success(test).trim() + EOL;
+      },
 
-          if (assertion.passed)
-            return result.message += success(test, assertion);
-
-          result.failures += 1;
-          result.message += failure(test, assertion);
-        });
-
-        result.message = EOL + result.message.trim();
-
-        if (!result.message.trim()) {
-          result.failures = 1;
-          result.message =  EOL + red('WARNING: ') + 'No tests were run!';
-        }
-
-        return result;
-      });
-  }
+      failure(message: string) {
+        result.failures += 1;
+        result.message += failure(test, message).trim() + EOL;
+      },
+    });
+  };
 }

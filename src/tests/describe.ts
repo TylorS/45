@@ -1,40 +1,39 @@
-import { blue, bold, underline } from 'typed-colors';
-import { failure, success } from '../helpers/formatMessage';
+import { Assertion, Test, Verification, fourtyFive, pass } from '../';
+import { blue, underline } from 'typed-colors';
 
 import { EOL } from 'os';
-import { Test } from '../';
-import { padNewLine } from '../helpers/padNewLine';
+import { padNewLine } from '../helpers';
 
-export function describe(category: string, tests: Array<Test>): Test {
-  return {
-    name: blue('Describe ' + underline(category)),
-    showStatus: false,
-    run() {
-      return Promise.all(tests.map(test => test.run()))
-        .then(assertions => {
-          let result = { passed: true, message: '' };
-
-          assertions.forEach((assertion, i) => {
-            const test = tests[i];
-
-            if (assertion.passed)
-              return result.message += success(test, assertion);
-
-            result.passed = false;
-            result.message += EOL + failure(test, assertion);
-          });
-
-          result.message = padNewLine(result.message).trim() + EOL;
-
-          return result;
-        });
-    },
-  };
+export function describe(thing: string, tests: Array<Test>): Test {
+  return new Describe(thing, tests);
 }
 
-export const given = (parameters: string, tests: Test[]): Test =>
-  ({
-    name: bold(blue('given') + ' ' + parameters),
-    showStatus: false,
-    run: () => describe(parameters, tests).run(),
-  });
+export class Describe implements Test {
+  public name: string;
+  public showStatus: false;
+  private tests: Array<Test>;
+
+  constructor(name: string, tests: Array<Test>) {
+    this.name = blue('Describe ') + underline(name);
+    this.tests = tests;
+  }
+
+  public run(): Promise<Assertion<any>> {
+    const { tests } = this;
+
+    return fourtyFive(tests).then(testResult => {
+      const { message, failures } = testResult;
+
+      if (!failures) {
+        this.name += EOL + '  ' + padNewLine(message);
+        return pass(void 0);
+      }
+
+      return {
+        verify(verification: Verification<any>) {
+          verification.failure(message);
+        },
+      };
+    });
+  }
+}

@@ -1,15 +1,15 @@
-import * as assert from '../assertions';
+import { Assertion, Test } from '../';
+import { blue, underline } from 'typed-colors';
 
-import { Test, TestFn } from '../';
-import { blue, bold } from 'typed-colors';
+import { assertIsAssertion } from '../helpers';
 
-import { assertIsAssertion } from '../helpers/assertIsAssertion';
-import { coerceToPromise } from '../helpers/coerceToPromise';
+export function it<A>(does: string, testFn: () => Assertion<A>): Test;
+export function it<A>(does: string, testFn: () => Promise<Assertion<A>>): Test;
 
-export function it(does: string, test: TestFn): Test {
+export function it<A>(does: string, testFn: () => Assertion<A> | Promise<Assertion<A>>): Test {
   return {
-    name: bold(blue('it ') + does),
     showStatus: true,
-    run: () => coerceToPromise(test(assert)).then(assertIsAssertion),
+    name: blue('it ') + underline(does),
+    run: () => Promise.resolve(testFn()).then(assertIsAssertion),
   };
 }

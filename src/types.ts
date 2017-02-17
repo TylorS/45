@@ -1,23 +1,14 @@
+import { Assertion } from '4.5';
+
 export interface Test {
   name: string;
-  run(): Promise<Assertion>;
+  run(): Promise<Assertion<any>>;
   showStatus: boolean;
 }
 
-export interface Assert
-  {
-    all (assertions: Array<Assertion>): Assertion;
-    assert (bool: boolean): Assertion;
-    equals <A>(expected: A, actual: A): Assertion;
-    equals <A>(expected: A): (actual: A) => Assertion;
-    fail (message: any): Assertion;
-    throws (f: () => any): Assertion;
-  };
+export type TestFn = (() => Assertion<any>) | (() => Promise<Assertion<any>>);
 
-export type TestFn = ((assert: Assert) => Assertion) | ((assert: Assert) => Promise<Assertion>);
-
-export type Assertion =
-  {
-    passed: boolean;
-    message: string;
-  };
+export interface TestResult {
+  failures: number;
+  message: string;
+}

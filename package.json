@@ -10,7 +10,7 @@
   "scripts": {
     "test:lint": "northbrook tslint",
     "test:unit": "npm run build && node bin/45.js",
-    "test": "npm run test:lint && npm run test:unit",
+    "test": "npm run test:lint --silent && npm run test:unit --silent",
     "commit": "northbrook commit",
     "build": "northbrook tsc",
     "preversion": "npm run build",
@@ -45,12 +45,7 @@
     "typescript": "^2.1.5"
   },
   "dependencies": {
-    "@typed/curry": "^1.0.1",
-    "buba": "^4.0.2",
-    "glob-expand": "^0.2.1",
-    "lodash.isequal": "^4.5.0",
-    "object-inspect": "^1.2.1",
-    "ts-node": "^2.0.0",
+    "4.5": "^0.5.0",
     "typed-colors": "^1.0.0",
     "typed-figures": "^1.0.0"
   }
