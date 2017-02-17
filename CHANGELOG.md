@@ -1,3 +1,15 @@
+# 1.0.0 (2017-02-17)
+---
+
+## Breaking Changes
+
+1. remove callback values from test functions
+  - feat(45): reimplement on top of 45 [ded2d435](https://github.com/TylorS/45/commits/ded2d43521a379fa5de37264d1864b7b3eb0ad2e)
+
+## Features
+
+- feat(45): add findAllTests api [c11d3a84](https://github.com/TylorS/45/commits/c11d3a8444bd5407ab847b40b87d58f4b1c11be3)
+
 # 0.1.1 (2017-02-04)
 ---
 
