@@ -1,8 +1,8 @@
 import { Assertion, Test, Verification, fourtyFive, pass } from '../';
 import { blue, underline } from 'typed-colors';
+import { calculateTimeout, padNewLine } from '../helpers';
 
 import { EOL } from 'os';
-import { padNewLine } from '../helpers';
 
 export function describe(thing: string, tests: Array<Test>): Test {
   return new Describe(thing, tests);
@@ -11,17 +11,27 @@ export function describe(thing: string, tests: Array<Test>): Test {
 export class Describe implements Test {
   public name: string;
   public showStatus: false;
-  private tests: Array<Test>;
+  private _tests: Array<Test>;
+  private _timeout: number;
 
   constructor(name: string, tests: Array<Test>) {
     this.name = blue('Describe ') + underline(name);
-    this.tests = tests;
+    this._tests = tests;
+    this._timeout = calculateTimeout(tests);
+  }
+
+  get timeout() {
+    return this._timeout;
+  }
+
+  set timeout(time: number) {
+    this._timeout = calculateTimeout(this._tests, time);
   }
 
   public run(): Promise<Assertion<any>> {
-    const { tests } = this;
+    const { _tests } = this;
 
-    return fourtyFive(tests).then(testResult => {
+    return fourtyFive(_tests).then(testResult => {
       const { message, failures } = testResult;
 
       if (!failures) {

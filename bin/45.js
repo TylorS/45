@@ -18,7 +18,11 @@ fourtyFive.fourtyFive(fourtyFive.findAllTests(testFiles.length === 0 ? void 0 : 
       console.log(EOL + trimResult(message));
 
     process.exit(failures);
-});
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
 function trimResult (message) {
   return message

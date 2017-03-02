@@ -10,6 +10,7 @@ export function it<A>(does: string, testFn: () => Assertion<A> | Promise<Asserti
   return {
     showStatus: true,
     name: blue('it ') + underline(does),
+    timeout: 2000,
     run: () => tryRunTest<A>(testFn).then(assertIsAssertion),
   };
 }

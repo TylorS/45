@@ -2,6 +2,7 @@ import { Assertion } from '4.5';
 
 export interface Test {
   name: string;
+  timeout: number;
   run(): Promise<Assertion<any>>;
   showStatus: boolean;
 }

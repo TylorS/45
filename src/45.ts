@@ -1,4 +1,4 @@
-import { Assertion, Test, TestResult } from './';
+import { Assertion, Test, TestResult, fail } from './';
 import { failure, success } from './helpers';
 
 import { EOL } from 'os';
@@ -11,7 +11,8 @@ export function fourtyFive(tests: Array<Test>): Promise<TestResult> {
 
 function runTest(result: TestResult) {
   return function (test: Test) {
-    return test.run().then(verify(result, test), handleFailure(result, test));
+    return timeout(test.timeout, test.run())
+      .then(verify(result, test), handleFailure(result, test));
   };
 }
 
@@ -35,4 +36,28 @@ function handleFailure(result: TestResult, test: Test) {
     result.failures +=1;
     result.message += failure(test, err).trim() + EOL;
   };
+}
+
+function timeout(ms: number, promise: Promise<any>): Promise<any> {
+  let _resolve: Function;
+  let _reject: Function;
+
+  const p  = new Promise((resolve, reject) => {
+    _resolve = resolve;
+    _reject = reject;
+  })
+
+  const id = setTimeout(() => _reject(`Timeout: Test did not complete before ${ms} timeout`), ms);
+
+  promise
+    .then(x => {
+      clearTimeout(id);
+      _resolve(x);
+    })
+    .catch(err => {
+      clearTimeout(id);
+      _reject(err);
+    })
+
+  return p;
 }
