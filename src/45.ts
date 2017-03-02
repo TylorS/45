@@ -11,7 +11,7 @@ export function fourtyFive(tests: Array<Test>): Promise<TestResult> {
 
 function runTest(result: TestResult) {
   return function (test: Test) {
-    return test.run().then(verify(result, test));
+    return test.run().then(verify(result, test), handleFailure(result, test));
   };
 }
 
@@ -27,5 +27,12 @@ function verify(result: TestResult, test: Test) {
         result.message += failure(test, message).trim() + EOL;
       },
     });
+  };
+}
+
+function handleFailure(result: TestResult, test: Test) {
+  return function (err: any) {
+    result.failures +=1;
+    result.message += failure(test, err).trim() + EOL;
   };
 }

@@ -1,4 +1,4 @@
-import { Assertion, Test } from '../';
+import { Assertion, Test, fail } from '../';
 import { blue, underline } from 'typed-colors';
 
 import { assertIsAssertion } from '../helpers';
@@ -10,6 +10,16 @@ export function it<A>(does: string, testFn: () => Assertion<A> | Promise<Asserti
   return {
     showStatus: true,
     name: blue('it ') + underline(does),
-    run: () => Promise.resolve(testFn()).then(assertIsAssertion),
+    run: () => tryRunTest<A>(testFn).then(assertIsAssertion),
   };
+}
+
+function tryRunTest<A>(testFn: () => Assertion<A> | Promise<Assertion<A>>) {
+  return new Promise((resolve) => {
+    try {
+      resolve(testFn());
+    } catch (e) {
+      resolve(fail(e));
+    }
+  });
 }

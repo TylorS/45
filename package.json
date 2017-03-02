@@ -2,19 +2,29 @@
   "name": "45",
   "version": "1.0.0",
   "main": "lib/index.js",
+  "jsnext:main": "lib.es2015/index.js",
+  "module": "lib.es2015/index.js",
   "typings": "lib/index.d.ts",
   "bin": {
     "45": "bin/45.js"
   },
   "description": "A functionally-oriented test runner",
   "scripts": {
-    "test:lint": "northbrook tslint",
-    "test:unit": "npm run build && node bin/45.js",
-    "test": "npm run test:lint --silent && npm run test:unit --silent",
-    "commit": "northbrook commit",
-    "build": "northbrook tsc",
-    "preversion": "npm run build",
-    "release": "northbrook release"
+    "build": "yarn build:commonjs && yarn build:es2015",
+    "build:commonjs": "tsc -P .config/tsconfig.commonjs.json",
+    "build:es2015": "tsc -P .config/tsconfig.es2015.json",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 -p angular",
+    "clean": "rimraf lib lib.es2015",
+    "commit": "git-cz",
+    "commitmsg": "validate-commit-msg",
+    "postchangelog": "git add CHANGELOG.md && git commit -m 'docs(CHANGELOG): amend changelog'",
+    "postversion": "npm run changelog && git push origin master --tags && npm publish",
+    "preversion": "yarn test && yarn build",
+    "release:major": "npm version major -m 'chore(package): v%s'",
+    "release:minor": "npm version minor -m 'chore(package): v%s'",
+    "test": "yarn test:lint && yarn test:unit",
+    "test:lint": "tslint src/**/*.ts",
+    "test:unit": "npm run build && node bin/45.js"
   },
   "repository": {
     "type": "git",
@@ -35,14 +45,15 @@
   "homepage": "https://github.com/TylorS/45#readme",
   "devDependencies": {
     "@motorcycle/tslint": "^1.3.0",
-    "@northbrook/tsc": "^1.0.7",
-    "@northbrook/tslint": "^2.1.7",
     "@types/glob-expand": "^0.0.30",
-    "@types/node": "^7.0.4",
-    "mocha": "^3.2.0",
-    "northbrook": "^4.6.0",
-    "tslint": "^4.4.2",
-    "typescript": "^2.1.5"
+    "@types/node": "^7.0.5",
+    "commitizen": "^2.9.6",
+    "conventional-changelog-cli": "^1.2.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "husky": "^0.13.2",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1",
+    "validate-commit-msg": "^2.11.1"
   },
   "dependencies": {
     "4.5": "^0.5.0",
