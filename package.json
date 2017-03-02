@@ -19,7 +19,7 @@
     "commitmsg": "validate-commit-msg",
     "postchangelog": "git add CHANGELOG.md && git commit -m 'docs(CHANGELOG): amend changelog'",
     "postversion": "npm run changelog && git push origin master --tags && npm publish",
-    "preversion": "yarn test && yarn build",
+    "preversion": "yarn test && yarn build && yarn login",
     "release:major": "npm version major -m 'chore(package): v%s'",
     "release:minor": "npm version minor -m 'chore(package): v%s'",
     "test": "yarn test:lint && yarn test:unit",
