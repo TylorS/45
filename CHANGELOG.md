@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/TylorS/45/compare/v1.1.0...v1.2.0) (2017-03-02)
+
+
+### Features
+
+* **timeout:** test failure after timeouts ([22c50b7](https://github.com/TylorS/45/commit/22c50b7))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/TylorS/45/compare/v1.0.0...v1.1.0) (2017-03-02)
 
