@@ -50,6 +50,6 @@ export class Describe implements Test {
 
 function trimResult (message: string) {
   return message
-    .replace(new RegExp(`[${EOL}]{2,}`, 'g'), '')
+    .replace(new RegExp(`[${EOL}]{3,}`, 'g'), '')
     .trim();
 };
