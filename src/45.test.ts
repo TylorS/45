@@ -15,7 +15,7 @@ export const test: Test =
             const containsErrorMessage = equals(true, result.message.indexOf(`test failure`) > -1);
 
             return chain(() => containsErrorMessage, didFail);
-          })
+          });
       }),
     ]),
 
@@ -43,7 +43,7 @@ export const test: Test =
 
     given(`a test that returns an observable`, [
       it(`should assert stream of assertions`, () => {
-        return map(equals(0), take(2, periodic(1, 0)))
+        return map(equals(0), take(2, periodic(1, 0)));
       }),
     ]),
 

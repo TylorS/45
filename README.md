@@ -118,7 +118,7 @@ export const test = describe('My thing', [
 #### `it(does: string, testFn: TestFn): Test`
 
 Primitive test type which allows providing a callback to
-actually perform assertions.
+actually perform assertions. By default, will timeout at 2000 milliseconds.
 
 ```typescript
 import { it, pass } from '45';
@@ -126,6 +126,28 @@ import { it, pass } from '45';
 export const test = it('does things', () => {
   return pass(1);
 })
+```
+
+#### `timeout(ms: number, test: Test): Test`
+
+Allows adjusting the amount of time a test can take to complete.
+
+```typescript
+import { it, timeout, equals } from '45';
+
+export const failing = it('fails', () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 3000, 1)
+  })
+    .then(equals(1));
+})
+
+export const passing = timeout(3500, it('passes', () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 3000, 1)
+  })
+    .then(equals(1));
+}));
 ```
 
 ## Assertions (re-exported from 4.5)
