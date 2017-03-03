@@ -1,3 +1,13 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/TylorS/45/compare/v1.6.0...v1.7.0) (2017-03-03)
+
+
+### Features
+
+* **beforeEach:** add beforeEach Test hook ([b2b7dfa](https://github.com/TylorS/45/commit/b2b7dfa))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/TylorS/45/compare/v1.5.0...v1.6.0) (2017-03-03)
 
