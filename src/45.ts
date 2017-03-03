@@ -1,4 +1,4 @@
-import { Assertion, Test, TestResult, fail } from './';
+import { Assertion, Test, TestResult } from './';
 import { failure, success, timeout } from './helpers';
 
 import { EOL } from 'os';
@@ -20,12 +20,12 @@ function verify(result: TestResult, test: Test) {
   return function (assertion: Assertion<any>) {
     assertion.verify({
       success() {
-        result.message += success(test).trim() + EOL;
+        result.message += EOL + success(test).trim() + EOL;
       },
 
       failure(message: string) {
         result.failures += 1;
-        result.message += failure(test, message).trim() + EOL;
+        result.message += EOL + failure(test, message).trim() + EOL;
       },
     });
   };
@@ -33,7 +33,7 @@ function verify(result: TestResult, test: Test) {
 
 function handleFailure(result: TestResult, test: Test) {
   return function (err: any) {
-    result.failures +=1;
+    result.failures += 1;
     result.message += failure(test, err).trim() + EOL;
   };
 }

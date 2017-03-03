@@ -3,7 +3,7 @@ import { map, periodic, take } from 'most';
 
 import { fourtyFive } from './45';
 
-export const tes: Test =
+export const test: Test =
   describe(`45`, [
     given(`a test that throws an error`, [
       it(`handles the errors`, () => {
@@ -44,6 +44,16 @@ export const tes: Test =
     given(`a test that returns an observable`, [
       it(`should assert stream of assertions`, () => {
         return map(equals(0), take(2, periodic(1, 0)))
+      }),
+    ]),
+
+    given(`an async await test functon`, [
+      it(`handles it like a boss`, async () => {
+        const promise = Promise.resolve(1);
+
+        const value = await promise;
+
+        return equals(1, value);
       }),
     ]),
   ]);

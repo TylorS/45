@@ -35,7 +35,7 @@ export class Describe implements Test {
       const { message, failures } = testResult;
 
       if (!failures) {
-        this.name += EOL + '  ' + padNewLine(message);
+        this.name += EOL + '  ' + padNewLine(trimResult(message));
         return pass(void 0);
       }
 
@@ -47,3 +47,9 @@ export class Describe implements Test {
     });
   }
 }
+
+function trimResult (message: string) {
+  return message
+    .replace(new RegExp(`[${EOL}]{2,}`, 'g'), '')
+    .trim();
+};

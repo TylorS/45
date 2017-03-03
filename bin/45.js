@@ -26,6 +26,6 @@ fourtyFive.fourtyFive(fourtyFive.findAllTests(testFiles.length === 0 ? void 0 : 
 
 function trimResult (message) {
   return message
-    .replace(new RegExp(`[${EOL}]{2,}`, 'g'), '')
+    .replace(new RegExp(`[${EOL}]{3,}`, 'g'), '')
     .trim()
 };
