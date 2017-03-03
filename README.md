@@ -78,14 +78,14 @@ And you should see:
 
 When running 45 from the command line, it will look for all test files
 it can, collecting all exports, of no particular export name, that adhere
-to the `Test` interface describe in the [Types](#types) section. This means
+to the `Test` interface described in the [types](#types) section. This means
 that 45 can be extended to handle new test types not offered here via 3rd
 party libraries.
 
 All 45 `Test`s must return objects adhering to the `Assertion` interface
 described in the [Types](#types) section. Many assertions are re-exported by this
 library from [4.5](https://github.com/TylorS/4.5). Though a number are provided
-by default, 3rd party libraries implementing the `Assertion` library can be used
+by default -- 3rd party libraries implementing the `Assertion` interface can be used
 100% freely.
 
 #### `describe(thing: string, tests: Array<Test>): Test`
@@ -117,6 +117,9 @@ export const test = describe('My thing', [
 
 #### `it(does: string, testFn: TestFn): Test`
 
+Primitive test type which allows providing a callback to
+actually perform assertions.
+
 ```typescript
 import { it, pass } from '45';
 
@@ -128,7 +131,7 @@ export const test = it('does things', () => {
 ## Assertions (re-exported from 4.5)
 
 - All functions of arity 2 or more are curried.
-- All types are defined below in the [Types](#types) section.
+- All types are defined below in the [types](#types) section.
 
 #### `equals<A>(expected: A, actual: A): Assertion<A>`
 
@@ -148,7 +151,7 @@ Creates an assertion which will always fail with a given message.
 
 #### `throws(fn: () => any): Assertion<Error>`
 
-Creates an assetion that tests that a given function throws and error.
+Creates an assertion that tests that a given function throws and error.
 
 ## Assertion combinators (re-exported from 4.5)
 
@@ -162,7 +165,7 @@ import { it, map, equals } from '45';
 export const test = it('maps a value from type A to type B', () => {
   const add1 = (x: number) => x + 1;
 
-  return equals(2, map(add1 /* called with 1 */, equals(1, 1)));
+  return map(add1 /* called with 1 */, equals(1, 1)) // Assertion<2>;
 });
 ```
 
