@@ -13,7 +13,7 @@ export function it<A>(does: string, testFn: TestFn): Test {
 }
 
 class It<A> implements Test {
-  public showStatus: true;
+  public showStatus = true;
   public timeout = 2000;
   public name: string;
   private _testFn: TestFn;

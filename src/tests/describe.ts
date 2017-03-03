@@ -10,7 +10,7 @@ export function describe(thing: string, tests: Array<Test>): Test {
 
 export class Describe implements Test {
   public name: string;
-  public showStatus: false;
+  public showStatus = false;
   private _tests: Array<Test>;
   private _timeout: number;
 
