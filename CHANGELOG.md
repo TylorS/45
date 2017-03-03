@@ -1,3 +1,13 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/TylorS/45/compare/v1.2.0...v1.3.0) (2017-03-03)
+
+
+### Features
+
+* **45:** add observable support ([7b0ccbe](https://github.com/TylorS/45/commit/7b0ccbe))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/TylorS/45/compare/v1.1.0...v1.2.0) (2017-03-02)
 
