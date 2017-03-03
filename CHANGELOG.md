@@ -1,3 +1,13 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/TylorS/45/compare/v1.5.0...v1.6.0) (2017-03-03)
+
+
+### Bug Fixes
+
+* **describe:** really fix formatting stuff :) ([be2b184](https://github.com/TylorS/45/commit/be2b184))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/TylorS/45/compare/v1.4.0...v1.5.0) (2017-03-03)
 
