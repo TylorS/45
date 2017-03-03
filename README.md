@@ -26,7 +26,7 @@ Create a test file
 ```js
 // test/foo.js
 
-# ES2015
+// ES2015
 import { describe, given, it, equals } from '45';
 
 export const test = describe('Array', [
@@ -41,7 +41,7 @@ export const otherTest = it('equals 4', () => {
   return equals(4, 4);
 })
 
-# commonjs
+// commonjs
 const { describe, given, it, equals } = require('45');
 
 exports.test = describe('Array', [
