@@ -1,3 +1,13 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/TylorS/45/compare/v1.4.0...v1.5.0) (2017-03-03)
+
+
+### Bug Fixes
+
+* **45:** formatting fixes ([ba6096d](https://github.com/TylorS/45/commit/ba6096d))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/TylorS/45/compare/v1.3.0...v1.4.0) (2017-03-03)
 
