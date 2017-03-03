@@ -1,4 +1,5 @@
 import { Assertion, Test, chain, describe, equals, fail, given, it, timeout } from './';
+import { map, periodic, take } from 'most';
 
 import { fourtyFive } from './45';
 
@@ -37,6 +38,12 @@ export const tes: Test =
 
             return chain(() => containsErrorMessage, didFail);
           });
+      }),
+    ]),
+
+    given(`a test that returns an observable`, [
+      it(`should assert stream of assertions`, () => {
+        return map(equals(0), take(2, periodic(1, 0)))
       }),
     ]),
   ]);

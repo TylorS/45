@@ -51,6 +51,7 @@
     "conventional-changelog-cli": "^1.2.0",
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.13.2",
+    "most": "^1.2.2",
     "tslint": "^4.5.1",
     "typescript": "^2.2.1",
     "validate-commit-msg": "^2.11.1"
@@ -59,6 +60,7 @@
     "4.5": "^0.5.0",
     "buba": "^4.0.2",
     "glob-expand": "^0.2.1",
+    "symbol-observable": "^1.0.4",
     "ts-node": "^2.1.0",
     "typed-colors": "^1.0.0",
     "typed-figures": "^1.0.0"
