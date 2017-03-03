@@ -25,7 +25,7 @@ export const test: Test =
 
         const promise = new Promise<Assertion<any>>((resolve) => {
           setTimeout(() => {
-            resolve(fail(`Test should timeout`))
+            resolve(fail(`Test should timeout`));
           }, time * 2);
         });
 
@@ -34,7 +34,7 @@ export const test: Test =
         return fourtyFive([failingTest])
           .then(result => {
             const didFail = equals(1, result.failures);
-            const containsErrorMessage = equals(true, result.message.indexOf(`Timeout`) > -1)
+            const containsErrorMessage = equals(true, result.message.indexOf(`Timeout`) > -1);
 
             return chain(() => containsErrorMessage, didFail);
           });

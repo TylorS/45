@@ -27,6 +27,10 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@typed/curry/-/curry-1.0.1.tgz#555d4624b0cbf09e101945326d3bb9ffcaba3655"
 
+"@typed/sequence@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@typed/sequence/-/sequence-1.1.0.tgz#7e84b267d602bb3d452d59b7ac9b55f9597a862f"
+
 "@types/glob-expand@^0.0.30":
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/glob-expand/-/glob-expand-0.0.30.tgz#7d1185a8607b693a2bb7414f1cf9ea1b8fd396d6"

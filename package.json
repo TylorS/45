@@ -23,7 +23,7 @@
     "release:major": "npm version major -m 'chore(package): v%s'",
     "release:minor": "npm version minor -m 'chore(package): v%s'",
     "test": "yarn test:lint && yarn test:unit",
-    "test:lint": "tslint src/**/*.ts",
+    "test:lint": "tslint 'src/**/*.ts'",
     "test:unit": "npm run build && node bin/45.js"
   },
   "repository": {
@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "4.5": "^0.5.0",
+    "@typed/sequence": "^1.1.0",
     "buba": "^4.0.2",
     "glob-expand": "^0.2.1",
     "symbol-observable": "^1.0.4",

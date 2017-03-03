@@ -1,11 +1,12 @@
 import { Assertion } from '4.5';
 
-export interface Test {
-  name: string;
-  timeout: number;
-  run(): Promise<Assertion<any>>;
-  showStatus: boolean;
-}
+export type Test =
+  {
+    name: string;
+    timeout: number;
+    showStatus: boolean;
+    run(): Promise<Assertion<any>>;
+  };
 
 export type TestFn =
   (() => Assertion<any>) |
@@ -20,16 +21,16 @@ export interface TestResult {
 export type Observable<A> =
   {
     subscribe(observer: Observer<A>): Subscription;
-  }
+  };
 
 export type Observer<A> =
   {
     next(value: A): any;
     error(err: any): any;
     complete(): any;
-  }
+  };
 
 export type Subscription =
   {
     unsubscribe(): any;
-  }
+  };
