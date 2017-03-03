@@ -150,6 +150,33 @@ export const passing = timeout(3500, it('passes', () => {
 }));
 ```
 
+#### `beforeEach(hook: () => any, tests: Array<Test>): Test`
+
+Allow running a hook before a series of tests. This will run the containing array
+of tests one after another.
+
+```typescript
+import { beforeEach, describe, given, it } from './';
+
+import { equals } from '4.5';
+
+let x = 0;
+
+export const test = describe('beforeEach', [
+  given(`a function and an array of tests`, [
+    beforeEach(() => { x++; }, [
+      it('runs beforeEach test', () => {
+        return equals(1, x);
+      }),
+
+      it('runs beforeEach test every time', () => {
+        return equals(2, x);
+      }),
+    ]),
+  ]),
+]);
+```
+
 ## Assertions (re-exported from 4.5)
 
 - All functions of arity 2 or more are curried.
